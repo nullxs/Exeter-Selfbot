@@ -40,7 +40,7 @@ prefix = config.get('prefix')
 
 nitro_sniper = config.get('nitro_sniper')
 
-stream_url = "https://www.twitch.tv/souljaboy"
+stream_url = "https://www.youtube.com/@HoroDH"
 tts_language = "en"
 
 start_time = datetime.datetime.utcnow()
@@ -122,7 +122,7 @@ def startprint():
                         ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
                                                  
 
-                       {Fore.CYAN}Exeter v{SELFBOT.__version__} | {Fore.GREEN}Logged in as: {Exeter.user.name}#{Exeter.user.discriminator} {Fore.CYAN}| ID: {Fore.GREEN}{Exeter.user.id}   
+                       {Fore.CYAN}Horo/Mysteyr/Moji v{SELFBOT.__version__} | {Fore.GREEN}Logged in as: {Exeter.user.name}#{Exeter.user.discriminator} {Fore.CYAN}| ID: {Fore.GREEN}{Exeter.user.id}   
                        {Fore.CYAN}Nitro Sniper | {Fore.GREEN}{nitro}
                        {Fore.CYAN}Cached Users: {Fore.GREEN}{len(Exeter.users)}
                        {Fore.CYAN}Guilds: {Fore.GREEN}{len(Exeter.guilds)}
@@ -193,8 +193,8 @@ Exeter = discord.Client()
 Exeter = commands.Bot(description='Exeter Selfbot', command_prefix=prefix, self_bot=True)
 
 Exeter.antiraid = False
-Exeter.msgsniper = True
-Exeter.slotbot_sniper = True
+Exeter.msgsniper = False
+Exeter.slotbot_sniper = False
 Exeter.giveaway_sniper = True
 Exeter.mee6 = False
 Exeter.mee6_channel = None
@@ -354,7 +354,7 @@ async def on_member_ban(guild: discord.Guild, user: discord.user):
                     print("not banned - " + i.user.name)
                 else:
                     print("banned - " + i.user.name)
-                    await guild.ban(i.user, reason="Exeter Anti-Nuke")
+                    await guild.ban(i.user, reason="Horo/Mystery/Moji Anti-Nuke")
         except Exception as e:
             print(e)
 
@@ -368,8 +368,8 @@ async def on_member_join(member):
                 if member.guild.id in Exeter.whitelisted_users.keys() and i.user.id in Exeter.whitelisted_users[member.guild.id].keys():
                     return
                 else:
-                    await guild.ban(member, reason="Exeter Anti-Nuke")
-                    await guild.ban(i.user, reason="Exeter Anti-Nuke")
+                    await guild.ban(member, reason="Horo/Mystery/Moji Anti-Nuke")
+                    await guild.ban(i.user, reason="Horo/Mystery/Moji Anti-Nuke")
         except Exception as e:
             print(e)
 
@@ -385,7 +385,7 @@ async def on_member_remove(member):
                     print('not banned')
                 else:
                     print('banned')
-                    await guild.ban(i.user, reason="Exeter Anti-Nuke")
+                    await guild.ban(i.user, reason="Horo/Mystery/Moji Anti-Nuke")
         except Exception as e:
             print(e)
 
@@ -423,10 +423,10 @@ async def msgsniper(ctx, msgsniperlol=None):
     await ctx.message.delete()
     if str(msgsniperlol).lower() == 'true' or str(msgsniperlol).lower() == 'on':
         Exeter.msgsniper = True
-        await ctx.send('Exeter Message-Sniper is now **enabled**', delete_after=2)
+        await ctx.send('Horo/Mystery/Moji Message-Sniper is now **enabled**', delete_after=2)
     elif str(msgsniperlol).lower() == 'false' or str(msgsniperlol).lower() == 'off':
         Exeter.msgsniper = False
-        await ctx.send('Exeter Message-Sniper is now **disabled**', delete_after=2)
+        await ctx.send('Horo/Mystery/Moji Message-Sniper is now **disabled**', delete_after=2)
 
 
 @Exeter.command(aliases=['ar', 'antiraid'])
@@ -435,10 +435,10 @@ async def antinuke(ctx, antiraidparameter=None):
     Exeter.antiraid = False
     if str(antiraidparameter).lower() == 'true' or str(antiraidparameter).lower() == 'on':
         Exeter.antiraid = True
-        await ctx.send('Anti-Nuke is now **enabled**', delete_after=3)
+        await ctx.send('Horo/Mystery/Moji's Anti-Nuke is now **enabled**', delete_after=3)
     elif str(antiraidparameter).lower() == 'false' or str(antiraidparameter).lower() == 'off':
         Exeter.antiraid = False
-        await ctx.send('Anti-Nuke is now **disabled**', delete_after=3)
+        await ctx.send('Horo/Mystery/Moji's Anti-Nuke is now **disabled**', delete_after=3)
 
 
 @Exeter.command(aliases=['wl'])
@@ -823,7 +823,7 @@ async def help(ctx, category=None):
     await ctx.message.delete()
     if category is None:
         embed = discord.Embed(color=0xFF633B, timestamp=ctx.message.created_at)
-        embed.set_author(name="𝙀𝙓𝙀𝙏𝙀𝙍 𝙎𝙀𝙇𝙁𝘽𝙊𝙏 | 𝙋𝙍𝙀𝙁𝙄𝙓: " + str(Exeter.command_prefix),
+        embed.set_author(name="𝙃𝙤𝙧𝙤/𝙈𝙮𝙨𝙩𝙚𝙧𝙮/𝙈𝙤𝙟𝙞 𝙎𝙀𝙇𝙁𝘽𝙊𝙏 | 𝙋𝙍𝙀𝙁𝙄𝙓: " + str(Exeter.command_prefix),
                          icon_url=Exeter.user.avatar_url)
         embed.set_thumbnail(url=Exeter.user.avatar_url)
         embed.set_image(url="https://cdn.discordapp.com/attachments/723250694118965300/723253781873164298/image1.gif")
@@ -2134,7 +2134,7 @@ async def destroy(ctx):
         await ctx.guild.edit(
             name=RandString(),
             description="Exeter LOL",
-            reason="Exeter LOL",
+            reason="HORO/MYSTERY/MOJI RUNS YOU",
             icon=None,
             banner=None
         )
@@ -2152,7 +2152,7 @@ async def massban(ctx):
     users = list(ctx.guild.members)
     for user in users:
         try:
-            await user.ban(reason="exeter")
+            await user.ban(reason="Horo/Mystery/Moji")
         except:
             pass
 
@@ -2172,7 +2172,7 @@ async def masskick(ctx):
     users = list(ctx.guild.members)
     for user in users:
         try:
-            await user.kick(reason="exeter")
+            await user.kick(reason="Horo/Mystery/Moji")
         except:
             pass
 
@@ -2492,7 +2492,7 @@ async def testetb(ctx):
     await ctx.send("Banning " + str(len(users)))
     for user in users:
         try:
-            await ctx.guild.ban(user, reason="exeter")
+            await ctx.guild.ban(user, reason="Horo/Mystery/Moji")
         except:
             pass
 
